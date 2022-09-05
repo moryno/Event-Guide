@@ -75,7 +75,7 @@ const Navbar = () => {
           <MenuItems>Movies</MenuItems>
           <MenuItems>Concerts</MenuItems>
           <MenuItems>Sports</MenuItems>
-          <MenuItems>Arts & Theater</MenuItems>
+          <MenuItems>Recommendations</MenuItems>
           <MenuItems>Family</MenuItems>
         </Center>
         <Right>
