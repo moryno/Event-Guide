@@ -5,8 +5,8 @@ const Container = styled.main`
 `;
 
 const Title = styled.h2`
-  margin-bottom: 6vh;
-  margin-left: 4vw;
+  margin-bottom: 3vh;
+  margin-left: 1.5vw;
   font-weight: 600;
 `;
 
@@ -16,7 +16,7 @@ const Wrapper = styled.section`
 `;
 
 const Card = styled.article`
-  width: 20%;
+  width: 23%;
   border-radius: 0.25rem;
   flex-direction: column;
   box-sizing: border-box;
