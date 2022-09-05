@@ -24,6 +24,7 @@ const Title = styled.h3`
 
 const Span = styled.span`
   color: #336cdf;
+  cursor: pointer;
 `;
 
 const Card = styled.article`
@@ -47,18 +48,23 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Button = styled.button`
-  border: none;
-  padding: 0.7rem;
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background-color: rgba(30, 26, 27, 0.6);
+  font-weight: 600;
+  position: absolute;
   border-radius: 0.25rem;
   cursor: pointer;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: rgba(30, 26, 27, 0.6);
-  position: absolute;
+  padding: 0.6rem;
   bottom: 5%;
   left: 2%;
 `;
+
+const InfoTitle = styled.span``;
+
+const InfoText = styled.span``;
 
 const Family = () => {
   return (
@@ -74,7 +80,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -83,7 +92,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -92,7 +104,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -101,7 +116,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -110,7 +128,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -119,7 +140,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -128,7 +152,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
         <Card>
@@ -137,7 +164,10 @@ const Family = () => {
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
               alt="FamilyImg"
             />
-            <Button>Family</Button>
+            <InfoContainer>
+              <InfoTitle>Disney on Ice presents Into the magic</InfoTitle>
+              <InfoText>70 Events</InfoText>
+            </InfoContainer>
           </ImageContainer>
         </Card>
       </Wrapper>
