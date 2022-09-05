@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Container = styled.main`
   margin: 0 1.5vw;
-  box-sizing: border-box;
   margin-bottom: 4vh;
+  box-sizing: border-box;
 `;
 
 const Wrapper = styled.section`
@@ -60,84 +60,84 @@ const Button = styled.button`
   left: 2%;
 `;
 
-const Movie = () => {
+const Concert = () => {
   return (
     <Container>
       <Titlewrapper>
-        <Title>Movies</Title>
-        <Span>See All Movies</Span>
+        <Title>Concerts</Title>
+        <Span>See All Concerts</Span>
       </Titlewrapper>
       <Wrapper>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="movieImg"
+              alt="ConcertImg"
             />
-            <Button>Movies</Button>
+            <Button>Concerts</Button>
           </ImageContainer>
         </Card>
       </Wrapper>
@@ -145,4 +145,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default Concert;

@@ -16,7 +16,7 @@ const Wrapper = styled.section`
 `;
 
 const Card = styled.article`
-  width: 24%;
+  width: 23%;
   border-radius: 0.25rem;
   flex-direction: column;
   box-sizing: border-box;

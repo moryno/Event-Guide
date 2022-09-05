@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Concert from "./Concert";
 import Movie from "./Movie";
 
 const Container = styled.main`
@@ -16,6 +17,7 @@ const Product = () => {
     <Container>
       <Title>Top Selling</Title>
       <Movie />
+      <Concert />
     </Container>
   );
 };
