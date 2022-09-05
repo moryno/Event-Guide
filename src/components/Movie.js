@@ -1,25 +1,36 @@
 import styled from "styled-components";
 
 const Container = styled.main`
+  margin: 0 1.5vw;
   box-sizing: border-box;
-`;
-
-const Title = styled.h2`
-  margin-bottom: 3vh;
-  margin-left: 1.5vw;
-  font-weight: 600;
 `;
 
 const Wrapper = styled.section`
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+`;
+
+const Titlewrapper = styled.article`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Title = styled.h3`
+  margin-bottom: 3vh;
+  font-weight: 600;
+`;
+
+const Span = styled.span`
+  color: #336cdf;
 `;
 
 const Card = styled.article`
-  width: 24%;
+  width: 23%;
   border-radius: 0.25rem;
   flex-direction: column;
   box-sizing: border-box;
+  margin-bottom: 3vh;
   cursor: pointer;
 `;
 
@@ -48,16 +59,19 @@ const Button = styled.button`
   left: 2%;
 `;
 
-const Category = () => {
+const Movie = () => {
   return (
     <Container>
-      <Title>Browse by category</Title>
+      <Titlewrapper>
+        <Title>Movies</Title>
+        <Span>See All Movies</Span>
+      </Titlewrapper>
       <Wrapper>
         <Card>
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="categoryImg"
+              alt="movieImg"
             />
             <Button>Movies</Button>
           </ImageContainer>
@@ -66,7 +80,7 @@ const Category = () => {
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="categoryImg"
+              alt="movieImg"
             />
             <Button>Movies</Button>
           </ImageContainer>
@@ -75,7 +89,7 @@ const Category = () => {
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="categoryImg"
+              alt="movieImg"
             />
             <Button>Movies</Button>
           </ImageContainer>
@@ -84,7 +98,43 @@ const Category = () => {
           <ImageContainer>
             <Image
               src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="categoryImg"
+              alt="movieImg"
+            />
+            <Button>Movies</Button>
+          </ImageContainer>
+        </Card>
+        <Card>
+          <ImageContainer>
+            <Image
+              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+              alt="movieImg"
+            />
+            <Button>Movies</Button>
+          </ImageContainer>
+        </Card>
+        <Card>
+          <ImageContainer>
+            <Image
+              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+              alt="movieImg"
+            />
+            <Button>Movies</Button>
+          </ImageContainer>
+        </Card>
+        <Card>
+          <ImageContainer>
+            <Image
+              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+              alt="movieImg"
+            />
+            <Button>Movies</Button>
+          </ImageContainer>
+        </Card>
+        <Card>
+          <ImageContainer>
+            <Image
+              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+              alt="movieImg"
             />
             <Button>Movies</Button>
           </ImageContainer>
@@ -94,4 +144,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Movie;

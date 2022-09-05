@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Category from "./Category";
+import Product from "./Product";
 
 const Container = styled.main``;
 
@@ -8,13 +9,12 @@ const Wrapper = styled.section`
   margin: auto;
 `;
 
-const Title = styled.h3``;
-
 const ProductList = () => {
   return (
     <Container>
       <Wrapper>
         <Category />
+        <Product />
       </Wrapper>
     </Container>
   );
