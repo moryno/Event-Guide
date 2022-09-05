@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Concert from "./Concert";
+import Family from "./Family";
 import Movie from "./Movie";
 import Sport from "./Sport";
 
@@ -20,6 +21,7 @@ const Product = () => {
       <Movie />
       <Concert />
       <Sport />
+      <Family />
     </Container>
   );
 };
