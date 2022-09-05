@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Concert from "./Concert";
 import Movie from "./Movie";
+import Sport from "./Sport";
 
 const Container = styled.main`
   margin-top: 6vh;
@@ -18,6 +19,7 @@ const Product = () => {
       <Title>Top Selling</Title>
       <Movie />
       <Concert />
+      <Sport />
     </Container>
   );
 };
