@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import { Add, Remove } from "@material-ui/icons";
 
 const Container = styled.div``;
 
@@ -123,9 +124,9 @@ const SingleProduct = () => {
           <Price>1000</Price>
           <AddContainer>
             <AmountContainer>
-              {/* <Remove onClick={() => handleQuantity("dec")} />
-            <Amount>{quantity}</Amount>
-            <Add onClick={() => handleQuantity("inc")} /> */}
+              <Remove />
+              <Amount>2</Amount>
+              <Add />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>
