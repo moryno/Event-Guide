@@ -1,5 +1,6 @@
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import styled from "styled-components";
+import Items from "../components/Items";
 
 const Container = styled.div``;
 
@@ -50,6 +51,7 @@ const CategoryList = () => {
           </Select>
         </Filter>
       </FilterContainer>
+      <Items />
     </Container>
   );
 };
