@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Category from "./Category";
+import Items from "./Items";
 import Product from "./Product";
 
 const Container = styled.main``;
@@ -14,7 +15,7 @@ const ProductList = () => {
     <Container>
       <Wrapper>
         <Category />
-        <Product />
+        <Items />
       </Wrapper>
     </Container>
   );

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.section`
@@ -61,15 +62,17 @@ const Button = styled.button`
 const Item = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} alt="movieImg" />
-      <InfoContainer>
-        <Category>
-          <CategoryTitle>Music</CategoryTitle>
-        </Category>
-        <Title>Thor Ragnarok</Title>
-        <Date>12Jan 2022</Date>
-      </InfoContainer>
-      <Button>Buy Ticket</Button>
+      <Link to={`/product/${item.id}`}>
+        <Image src={item.img} alt="movieImg" />
+        <InfoContainer>
+          <Category>
+            <CategoryTitle>Music</CategoryTitle>
+          </Category>
+          <Title>Thor Ragnarok</Title>
+          <Date>12Jan 2022</Date>
+        </InfoContainer>
+        <Button>Buy Ticket</Button>
+      </Link>
     </Container>
   );
 };

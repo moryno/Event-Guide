@@ -1,6 +1,8 @@
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Items from "../components/Items";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div``;
 
@@ -31,27 +33,36 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const CategoryList = () => {
+  const category = useParams();
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState("");
+
+  const handleFilter = (event) => {
+    const { name, value } = event.target;
+    setFilter({ ...filter, [name]: value });
+  };
+
   return (
     <Container>
       <Navbar />
-      <Title>Products</Title>
+      <Title>{category.category}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select>
+          <Select name="trends" onChange={handleFilter}>
             <Option>Latest</Option>
             <Option>Oldest</Option>
           </Select>
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
-          <Select>
+          <Select onChange={(event) => setSort(event.target.value)}>
             <Option value={"asc"}>Price (asc)</Option>
             <Option value={"desc"}>Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Items />
+      <Items category={category} filter={filter} sort={sort} />
     </Container>
   );
 };
