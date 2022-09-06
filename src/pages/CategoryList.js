@@ -33,7 +33,7 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const CategoryList = () => {
-  const category = useParams();
+  const { category } = useParams();
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState("");
 
@@ -45,7 +45,7 @@ const CategoryList = () => {
   return (
     <Container>
       <Navbar />
-      <Title>{category.category}</Title>
+      <Title>{category}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>

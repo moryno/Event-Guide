@@ -12,24 +12,24 @@ const Container = styled.div`
 `;
 
 const Items = ({ category, filter, sort }) => {
-  // const [products, setProducts] = useState([]);
-  // const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const { data } = await axios.get(
-  //         category
-  //           ? `http://localhost:9292/products?category=${category}`
-  //           : "http://localhost:9292/products"
-  //       );
-  //       setProducts(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchProducts();
-  // }, [category]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await axios.get(
+          category
+            ? `http://localhost:9292/products?category=${category}`
+            : "http://localhost:9292/products"
+        );
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, [category]);
 
   // useEffect(() => {
   //   if (filter === "Latest") {
@@ -57,7 +57,7 @@ const Items = ({ category, filter, sort }) => {
 
   return (
     <Container>
-      {popularProducts?.map((product) => {
+      {products?.map((product) => {
         return <Item key={product.id} item={product} />;
       })}
     </Container>

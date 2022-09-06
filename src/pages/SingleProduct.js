@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { Add, Remove } from "@material-ui/icons";
+import { useLocation, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Container = styled.div``;
 
@@ -108,20 +111,29 @@ const Button = styled.button`
 `;
 
 const SingleProduct = () => {
+  const [product, setProduct] = useState({});
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`http://localhost:9292/products/${id}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [id]);
+
   return (
     <Container>
       <Navbar />
       <Wrapper>
         <ImageContainer>
-          <Image
-            src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-            alt="movieImg"
-          />
+          <Image src={product.img} alt="movieImg" />
         </ImageContainer>
         <InfoContainer>
-          <Title>Thor Ragnarok</Title>
-          <Desc>Lorem jjbvh vkkkkkkkkkkkkkkkkkkkk lgllllllllllllll</Desc>
-          <Price>1000</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.description}</Desc>
+          <Price>{product.price}</Price>
           <AddContainer>
             <AmountContainer>
               <Remove />

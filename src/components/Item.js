@@ -66,10 +66,10 @@ const Item = ({ item }) => {
         <Image src={item.img} alt="movieImg" />
         <InfoContainer>
           <Category>
-            <CategoryTitle>Music</CategoryTitle>
+            <CategoryTitle>{item.categories}</CategoryTitle>
           </Category>
-          <Title>Thor Ragnarok</Title>
-          <Date>12Jan 2022</Date>
+          <Title>{item.title}</Title>
+          <Date></Date>
         </InfoContainer>
         <Button>Buy Ticket</Button>
       </Link>
