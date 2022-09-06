@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Item from "./Item";
+import { popularProducts } from "../data";
 
 const Container = styled.div`
   display: flex;
@@ -11,13 +12,9 @@ const Container = styled.div`
 const Items = () => {
   return (
     <Container>
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {popularProducts.map((product) => {
+        return <Item key={product.id} item={product} />;
+      })}
     </Container>
   );
 };

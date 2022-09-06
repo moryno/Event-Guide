@@ -58,13 +58,10 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
-const Item = () => {
+const Item = ({ item }) => {
   return (
     <Container>
-      <Image
-        src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-        alt="movieImg"
-      />
+      <Image src={item.img} alt="movieImg" />
       <InfoContainer>
         <Category>
           <CategoryTitle>Music</CategoryTitle>
