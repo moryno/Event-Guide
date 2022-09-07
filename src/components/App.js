@@ -7,20 +7,22 @@ import Register from "../pages/Register";
 import { UserContext } from "../context/Context";
 
 import { useContext } from "react";
+import Header from "./Header";
 
 function App() {
   const { user } = useContext(UserContext);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products/:category" element={<CategoryList />} />
-        <Route path="/product/:id" element={<SingleProduct />} />
-        <Route path="/login" element={user ? <Home /> : <Login />} />
-        <Route path="/register" element={user ? <Home /> : <Register />} />
-      </Routes>
-    </Router>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/products/:category" element={<CategoryList />} />
+    //     <Route path="/product/:id" element={<SingleProduct />} />
+    //     <Route path="/login" element={user ? <Home /> : <Login />} />
+    //     <Route path="/register" element={user ? <Home /> : <Register />} />
+    //   </Routes>
+    // </Router>
+    <Header />
   );
 }
 
