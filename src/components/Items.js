@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Item from "./Item";
 import { popularProducts } from "../data";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { publicRequest } from "../requestMethod";
 
 const Container = styled.div`
   display: flex;
@@ -18,10 +18,8 @@ const Items = ({ category, filter, sort }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get(
-          category
-            ? `http://localhost:9292/products?category=${category}`
-            : "http://localhost:9292/products"
+        const { data } = await publicRequest.get(
+          category ? `/products?category=${category}` : "/products"
         );
         setProducts(data);
       } catch (error) {

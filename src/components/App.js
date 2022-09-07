@@ -4,17 +4,21 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
+import { UserContext } from "../context/Context";
+
+import { useContext } from "react";
 
 function App() {
-  const user = true;
+  const { user } = useContext(UserContext);
+  console.log(user);
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products/:category" element={<CategoryList />} />
         <Route path="/product/:id" element={<SingleProduct />} />
-        {/* <Route path="/login" element={user ? <Home /> : <Login />} />
-        <Route path="/register" element={user ? <Home /> : <Register />} /> */}
+        <Route path="/login" element={user ? <Home /> : <Login />} />
+        {/* <Route path="/register" element={user ? <Home /> : <Register />} /> */}
       </Routes>
     </Router>
   );
