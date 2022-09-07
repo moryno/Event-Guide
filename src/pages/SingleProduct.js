@@ -90,6 +90,28 @@ const CommentHeader = styled.article`
 
 const CommentDate = styled.span`
   font-size: 0.9rem;
+  float: right;
+`;
+const CommentEdit = styled.article`
+  float: right;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.625rem;
+  cursor: pointer;
+  &:first-child {
+    color: teal;
+  }
+  &:last-child {
+    color: tomato;
+  }
 `;
 
 const CommentTitle = styled.h3``;
@@ -157,7 +179,6 @@ const Button = styled.button`
 
 const SingleProduct = () => {
   const [product, setProduct] = useState({});
-  const [comments, setComments] = useState([]);
   const { id } = useParams();
   const { user } = useContext(UserContext);
 
@@ -180,6 +201,8 @@ const SingleProduct = () => {
     event.preventDefault();
     try {
       const { data } = await publicRequest.post(`/reviews`, input);
+      setProduct({ ...product, data });
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -199,60 +222,43 @@ const SingleProduct = () => {
       <Wrapper>
         <TopContainer>
           <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1647671195638-2a7cf32e3dbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODh8fGV2ZW50c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
-              alt="movieImg"
-            />
+            <Image src={product.img} alt="movieImg" />
           </ImageContainer>
           <InfoContainer>
-            <Category>Movies</Category>
-            <Title>Disney Land</Title>
+            <Category>{product.categories}</Category>
+            <Title>{product.title}</Title>
             <Score>Rating: 9.0</Score>
-            <Price>Ticket: 1900</Price>
+            <Price>Ticket: {product.price}</Price>
           </InfoContainer>
         </TopContainer>
         <BottomContainer>
           <DescriptionContainer>
             <DescriptionTitle>Description</DescriptionTitle>
-            <Desc>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </Desc>
+            <Desc>{product.description}</Desc>
           </DescriptionContainer>
           <CommentContainer>
-            <CommentTitle>2 Comments</CommentTitle>
-            <Comment>
-              <CommentHeader>
-                <UserName>Moryno</UserName>
-                <CommentDate>7th January</CommentDate>
-              </CommentHeader>
-              <Post>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen boo
-              </Post>
-            </Comment>
-            <Comment>
-              <CommentHeader>
-                <UserName>Moryno</UserName>
-                <CommentDate>7th January</CommentDate>
-              </CommentHeader>
-              <Post>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen boo
-              </Post>
-            </Comment>
+            <CommentTitle>{product.reviews?.length} Comments</CommentTitle>
+            {product.reviews?.map((review) => {
+              return (
+                <Comment key={review.id}>
+                  <CommentHeader>
+                    <UserName>{review.user.username}</UserName>
+                    <CommentDate>
+                      7th January
+                      <CommentEdit>
+                        <Icon>
+                          <i className="singlePostIcon far fa-edit"></i>
+                        </Icon>
+                        <Icon>
+                          <i className="singlePostIcon far fa-trash-alt"></i>
+                        </Icon>
+                      </CommentEdit>
+                    </CommentDate>
+                  </CommentHeader>
+                  <Post>{review.reviews}</Post>
+                </Comment>
+              );
+            })}
           </CommentContainer>
           <FormTitle>Leave a Reply</FormTitle>
           <ComposeForm onSubmit={handleSubmit}>
