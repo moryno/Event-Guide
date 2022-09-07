@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../context/Context";
+import { useContext } from "react";
 
 const Container = styled.main`
   height: 10vh;
   background-color: teal;
+  box-sizing: border-box;
 `;
 
 const Wrapper = styled.section`
@@ -46,11 +49,13 @@ const Right = styled.article`
   align-items: center;
   justify-content: flex-end;
   position: relative;
+  box-sizing: border-box;
 `;
 
 const TopInput = styled.input`
   padding: 0.5rem;
   outline: none;
+  padding-left: 2rem;
 `;
 
 const Icon = styled.div`
@@ -64,6 +69,12 @@ const Icon = styled.div`
 `;
 
 const Navbar = () => {
+  const { user, dispatch } = useContext(UserContext);
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    window.location.replace("/login");
+  };
   return (
     <Container>
       <Wrapper>
