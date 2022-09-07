@@ -4,14 +4,22 @@ import { useLocation, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/Context";
 import { publicRequest } from "../requestMethod";
+import VideoPlayer from "../components/VideoPlayer";
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: relative;
+`;
 
 const Wrapper = styled.div`
   width: 60%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  right: 0;
+  z-index: 9;
 `;
 
 const TopContainer = styled.section`
@@ -21,8 +29,8 @@ const TopContainer = styled.section`
 `;
 
 const ImageContainer = styled.div`
-  width: 23vw;
-  height: 60vh;
+  width: 15vw;
+  height: 45vh;
 `;
 
 const Image = styled.img`
@@ -39,17 +47,19 @@ const InfoContainer = styled.div`
   flex-direction: column;
   position: absolute;
   bottom: 0;
-  left: 23vw; ;
+  left: 15vw; ;
 `;
 
-const Title = styled.h2`
-  margin-bottom: 0.5rem;
+const Title = styled.h1`
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
 `;
 const BottomContainer = styled.section``;
 
 const Category = styled.p`
+  font-size: 1.1rem;
   opacity: 0.8;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const Desc = styled.p`
@@ -59,10 +69,11 @@ const Desc = styled.p`
 
 const Price = styled.span`
   font-weight: 100;
+  margin-bottom: 1rem;
 `;
 
 const Score = styled.span`
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const DescriptionContainer = styled.article``;
@@ -219,6 +230,7 @@ const SingleProduct = () => {
   return (
     <Container>
       <Navbar />
+      <VideoPlayer />
       <Wrapper>
         <TopContainer>
           <ImageContainer>

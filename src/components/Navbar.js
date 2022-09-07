@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.main`
   height: 10vh;
+  background-color: teal;
 `;
 
 const Wrapper = styled.section`
@@ -71,12 +73,24 @@ const Navbar = () => {
           </Logo>
         </Left>
         <Center>
-          <MenuItems>Home</MenuItems>
-          <MenuItems>Movies</MenuItems>
-          <MenuItems>Concerts</MenuItems>
-          <MenuItems>Sports</MenuItems>
+          <NavLink to={"/"}>
+            <MenuItems>Home</MenuItems>
+          </NavLink>
+          <NavLink to={"/products/movies"}>
+            <MenuItems>Movies</MenuItems>
+          </NavLink>
+          <NavLink to={"/products/concerts"}>
+            <MenuItems>Concerts</MenuItems>
+          </NavLink>
+          <NavLink to={"/products/sports"}>
+            <MenuItems>Sports</MenuItems>
+          </NavLink>
+
           <MenuItems>Recommendations</MenuItems>
-          <MenuItems>Family</MenuItems>
+
+          <NavLink to={"/products/families"}>
+            <MenuItems>Family</MenuItems>
+          </NavLink>
         </Center>
         <Right>
           <TopInput placeholder="Search..." />
