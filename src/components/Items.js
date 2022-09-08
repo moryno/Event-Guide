@@ -11,19 +11,15 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Items = ({ category, title, filter, sort }) => {
+const Items = ({ category, filter, sort, input }) => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const { data } = await publicRequest.get(
-          category
-            ? `/products?category=${category}`
-            : title
-            ? `/products?category=${title}`
-            : "/products"
+          category ? `/products?category=${category}` : "/products"
         );
         setProducts(data);
       } catch (error) {
@@ -33,6 +29,13 @@ const Items = ({ category, title, filter, sort }) => {
     fetchProducts();
   }, [category]);
 
+  const filteredProducts = products?.filter((product) => {
+    if (input === "") {
+      return product;
+    } else if (product.title?.toLowerCase().includes(input?.toLowerCase())) {
+      return product;
+    }
+  });
   // useEffect(() => {
   //   if (filter === "Latest") {
   //     setFilteredProducts((prev) => {
@@ -59,9 +62,11 @@ const Items = ({ category, title, filter, sort }) => {
 
   return (
     <Container>
-      {products?.map((product) => {
-        return <Item key={product.id} item={product} />;
-      })}
+      {category
+        ? filteredProducts?.map((product) => (
+            <Item key={product.id} item={product} />
+          ))
+        : products?.map((product) => <Item key={product.id} item={product} />)}
     </Container>
   );
 };

@@ -12,7 +12,7 @@ import { Footer } from "./Footer";
 
 function App() {
   const { user } = useContext(UserContext);
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState("");
 
   const onSearch = (newInput) => {
     setInput(newInput);
@@ -25,7 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/products/:category"
-          element={<CategoryList search={input} />}
+          element={<CategoryList input={input} />}
         />
         <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />

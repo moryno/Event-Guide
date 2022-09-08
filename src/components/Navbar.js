@@ -81,10 +81,11 @@ const Icon = styled.div`
   right: 5%;
 `;
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
   const { user, dispatch } = useContext(UserContext);
   const [input, setInput] = useState("");
 
+  onSearch(input);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     window.location.replace("/login");
@@ -121,6 +122,8 @@ const Navbar = () => {
         <Right>
           <TopInput
             onChange={(event) => setInput(event.target.value)}
+            name="title"
+            value={input.title}
             placeholder="Search..."
           />
           <Icon>

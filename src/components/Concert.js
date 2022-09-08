@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { publicRequest } from "../requestMethod";
 
 const Container = styled.main`
   margin: 0 1.5vw;
@@ -67,109 +70,44 @@ const InfoTitle = styled.span``;
 const InfoText = styled.span``;
 
 const Concert = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await publicRequest.get(`/products?category=concerts`);
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <Container>
       <Titlewrapper>
         <Title>Concerts</Title>
-        <Span>See All Concerts</Span>
+        <Link to={`/products/concerts`}>
+          <Span>See All Concerts</Span>
+        </Link>
       </Titlewrapper>
       <Wrapper>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
-        <Card>
-          <ImageContainer>
-            <Image
-              src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="ConcertImg"
-            />
-            <InfoContainer>
-              <InfoTitle>Pearl Jam</InfoTitle>
-              <InfoText>11 Events</InfoText>
-            </InfoContainer>
-          </ImageContainer>
-        </Card>
+        {products.map((item) => {
+          return (
+            <Card key={item.id}>
+              <Link to={`/product/${item.id}`}>
+                <ImageContainer>
+                  <Image src={item.img} alt="concertImg" />
+                  <InfoContainer>
+                    <InfoTitle>{item.title}</InfoTitle>
+                    <InfoText>Score: 9/10</InfoText>
+                  </InfoContainer>
+                </ImageContainer>
+              </Link>
+            </Card>
+          );
+        })}
       </Wrapper>
     </Container>
   );

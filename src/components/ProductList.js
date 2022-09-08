@@ -15,7 +15,7 @@ const ProductList = () => {
     <Container>
       <Wrapper>
         <Category />
-        <Items />
+        <Product />
       </Wrapper>
     </Container>
   );

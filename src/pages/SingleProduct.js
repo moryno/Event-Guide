@@ -199,7 +199,6 @@ const SingleProduct = () => {
     reviews: "",
     score: null,
   });
-  const [tempValue, setTempValue] = useState(input);
 
   useEffect(() => {
     const fetchProduct = async () => {

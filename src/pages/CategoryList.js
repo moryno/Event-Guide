@@ -32,15 +32,10 @@ const Select = styled.select`
 
 const Option = styled.option``;
 
-const CategoryList = () => {
+const CategoryList = ({ input }) => {
   const { category } = useParams();
-  const [filter, setFilter] = useState({});
+  const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
-
-  const handleFilter = (event) => {
-    const { name, value } = event.target;
-    setFilter({ ...filter, [name]: value });
-  };
 
   return (
     <Container>
@@ -48,20 +43,24 @@ const CategoryList = () => {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select name="trends" onChange={handleFilter}>
-            <Option>Latest</Option>
-            <Option>Oldest</Option>
+          <Select
+            name="trends"
+            onChange={(event) => setFilter(event.target.value)}
+          >
+            <Option value="latest">Latest</Option>
+            <Option value="oldest">Oldest</Option>
           </Select>
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
           <Select onChange={(event) => setSort(event.target.value)}>
+            <Option value={"all"}>All</Option>
             <Option value={"asc"}>Price (asc)</Option>
             <Option value={"desc"}>Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Items category={category} filter={filter} sort={sort} />
+      <Items category={category} filter={filter} sort={sort} input={input} />
     </Container>
   );
 };

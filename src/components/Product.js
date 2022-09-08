@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Concert from "./Concert";
 import Family from "./Family";
-import MovieList from "./MovieList";
+import Movie from "./Movie";
 import Sport from "./Sport";
 
 const Container = styled.main`
@@ -18,7 +18,7 @@ const Product = () => {
   return (
     <Container>
       <Title>Top Selling</Title>
-      <MovieList />
+      <Movie />
       <Concert />
       <Sport />
       <Family />

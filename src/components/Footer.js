@@ -93,7 +93,7 @@ export const Footer = () => {
         <SocialIcon>
           <a href={`https://www.reddit.com/user/mngash`} target="_blank">
             <Icon color="ff4500">
-              <i class="fab fa-reddit-alien"></i>
+              <i className="fab fa-reddit-alien"></i>
             </Icon>
           </a>
           <a href={`https://twitter.com/MauriceNganga5`} target="_blank">
@@ -110,7 +110,7 @@ export const Footer = () => {
             target="_blank"
           >
             <Icon color="0077b5">
-              <i class="fab fa-linkedin"></i>
+              <i className="fab fa-linkedin"></i>
             </Icon>
           </a>
         </SocialIcon>

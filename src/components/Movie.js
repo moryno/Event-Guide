@@ -1,5 +1,34 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { publicRequest } from "../requestMethod";
+
+const Container = styled.main`
+  margin: 0 1.5vw;
+  box-sizing: border-box;
+  margin-bottom: 4vh;
+`;
+
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+`;
+
+const Titlewrapper = styled.article`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Title = styled.h3`
+  margin-bottom: 3vh;
+  font-weight: 600;
+`;
+
+const Span = styled.span`
+  color: #336cdf;
+  cursor: pointer;
+`;
 
 const Card = styled.article`
   width: 23%;
@@ -35,24 +64,52 @@ const InfoContainer = styled.div`
   bottom: 5%;
   left: 2%;
 `;
+
 const InfoTitle = styled.span``;
 
 const InfoText = styled.span``;
 
 const Movie = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await publicRequest.get(`/products?category=movies`);
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
-    <Card>
-      <ImageContainer>
-        <Image
-          src="https://images.unsplash.com/photo-1603037738996-a04f1c6a9ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-          alt="movieImg"
-        />
-        <InfoContainer>
-          <InfoTitle>Children of men</InfoTitle>
-          <InfoText>Score: 9/10</InfoText>
-        </InfoContainer>
-      </ImageContainer>
-    </Card>
+    <Container>
+      <Titlewrapper>
+        <Title>Movies</Title>
+        <Link to={`/products/movies`}>
+          <Span>See All Movies</Span>
+        </Link>
+      </Titlewrapper>
+      <Wrapper>
+        {products.map((item) => {
+          return (
+            <Card key={item.id}>
+              <Link to={`/product/${item.id}`}>
+                <ImageContainer>
+                  <Image src={item.img} alt="movieImg" />
+                  <InfoContainer>
+                    <InfoTitle>{item.title}</InfoTitle>
+                    <InfoText>Score: 9/10</InfoText>
+                  </InfoContainer>
+                </ImageContainer>
+              </Link>
+            </Card>
+          );
+        })}
+      </Wrapper>
+    </Container>
   );
 };
 
