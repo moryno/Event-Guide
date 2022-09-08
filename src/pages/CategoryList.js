@@ -44,7 +44,6 @@ const CategoryList = () => {
 
   return (
     <Container>
-      <Navbar />
       <Title>{category}</Title>
       <FilterContainer>
         <Filter>
@@ -62,7 +61,7 @@ const CategoryList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Items category={category} filter={filter} sort={sort} />
+      <Items category={category} title={search} filter={filter} sort={sort} />
     </Container>
   );
 };

@@ -6,7 +6,7 @@ import Product from "./Product";
 const Container = styled.main``;
 
 const Wrapper = styled.section`
-  width: 80%;
+  width: 90%;
   margin: auto;
 `;
 

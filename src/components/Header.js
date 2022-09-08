@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import { sliderItems } from "../data";
+import { publicRequest } from "../requestMethod";
 
 const Container = styled.main`
   width: 100%;
@@ -10,13 +11,14 @@ const Container = styled.main`
   display: flex;
   position: relative;
   overflow: hidden;
+  margin: 2vh 0 5vh;
 `;
 
 const move = keyframes`
-   25% { transform: translateX(-50px)}
-   50% { transform: translateX(-100px)}
-   75% { transform: translateX(-150px)}
-   100% { transform: translateX(-200px)}
+   25% { transform: translateX(-336px)}
+   50% { transform: translateX(-672px)}
+   75% { transform: translateX(-1008px)}
+   100% { transform: translateX(-1344px)}
 `;
 
 const Wrapper = styled.section`
@@ -24,7 +26,7 @@ const Wrapper = styled.section`
   display: flex;
   transform: translateX(${(props) => props.slideIndex * -20}vw);
   transition: all 1.5s ease;
-  animation: ${move} 20s ease-in-out infinite alternate;
+  animation: ${move} 30s ease-in-out infinite alternate;
 `;
 
 const Slide = styled.article`
@@ -57,12 +59,21 @@ const Arrow = styled.div`
 const ImgContainer = styled.div`
   height: 100%;
   width: 100%;
-  flex: 1;
+  display: flex;
+  align-item: center;
+  justify-content: center;
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
 `;
 
 const Image = styled.img`
   max-width: 100%;
+  object-fit: cover;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 1.2s ease-in-out;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -73,7 +84,7 @@ const InfoContainer = styled.div`
   position: absolute;
   background-color: rgba(30, 26, 27, 0.6);
   bottom: 0;
-  cursor: pointer;
+  z-index: 9;
 `;
 
 const Title = styled.p``;
@@ -82,6 +93,19 @@ const Venue = styled.p``;
 
 const Header = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await publicRequest.get("/products");
+        setItems(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -97,8 +121,8 @@ const Header = () => {
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
+        {items.map((item) => (
+          <Slide key={item.id}>
             <ImgContainer>
               <Image src={item.img} />
               <InfoContainer>

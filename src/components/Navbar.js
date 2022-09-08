@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../context/Context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Container = styled.main`
   height: 10vh;
-  background-color: teal;
+  width: 100%;
+  background-color: #ca1b37;
+  color: #fff;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 `;
 
 const Wrapper = styled.section`
+  width: 100%;
   padding: 0.625rem 2rem;
   display: flex;
   align-items: center;
@@ -53,28 +58,38 @@ const Right = styled.article`
 `;
 
 const TopInput = styled.input`
-  padding: 0.5rem;
+  padding: 0.7rem;
   outline: none;
-  padding-left: 2rem;
+  background-color: transparent;
+  border-radius: 1rem;
+  border: 1px solid #fff;
+  &::placeholder {
+    color: #fff;
+    font-weight: 600;
+  }
 `;
 
 const Icon = styled.div`
   display: flex;
+  font-size: 1.125rem;
+  color: #fff;
   align-items: center;
   justify-content: center;
   margin-left: 1rem;
   cursor: pointer;
   position: absolute;
-  right: 2%;
+  right: 5%;
 `;
 
 const Navbar = () => {
   const { user, dispatch } = useContext(UserContext);
+  const [input, setInput] = useState("");
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     window.location.replace("/login");
   };
+
   return (
     <Container>
       <Wrapper>
@@ -104,16 +119,12 @@ const Navbar = () => {
           </NavLink>
         </Center>
         <Right>
-          <TopInput placeholder="Search..." />
+          <TopInput
+            onChange={(event) => setInput(event.target.value)}
+            placeholder="Search..."
+          />
           <Icon>
-            <i
-              className="topSearchIcon fas fa-search"
-              style={{
-                fontSize: "1.125rem",
-                color: "#666",
-                cursor: "pointer",
-              }}
-            ></i>
+            <i className="topSearchIcon fas fa-search"></i>
           </Icon>
         </Right>
       </Wrapper>

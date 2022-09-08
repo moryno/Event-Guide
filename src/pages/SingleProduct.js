@@ -139,6 +139,7 @@ const ComposeForm = styled.form`
   background-color: teal;
   border-radius: 0.3rem;
   box-sizing: border-box;
+  margin-bottom: 2rem;
   padding: 1rem;
 `;
 
@@ -192,11 +193,21 @@ const SingleProduct = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const { user } = useContext(UserContext);
+  const [updateMode, setUpdateMode] = useState(false);
 
   const [input, setInput] = useState({
     reviews: "",
     score: null,
   });
+  const [tempValue, setTempValue] = useState(input);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await publicRequest.get(`/products/${id}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [id]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -219,17 +230,29 @@ const SingleProduct = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await publicRequest.get(`/products/${id}`);
-      setProduct(data);
-    };
-    fetchProduct();
-  }, [id]);
+  const handleUpdate = async (reviewId) => {
+    try {
+      await publicRequest.patch(`/reviews/${reviewId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleDelete = async (reviewId) => {
+    try {
+      await publicRequest.delete(`/reviews/${reviewId}`);
+      setProduct((prevProduct) => {
+        return prevProduct.reviews.filter((review) => {
+          return review.id !== reviewId;
+        });
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
-      <Navbar />
       <VideoPlayer />
       <Wrapper>
         <TopContainer>
@@ -259,10 +282,16 @@ const SingleProduct = () => {
                       7th January
                       <CommentEdit>
                         <Icon>
-                          <i className="singlePostIcon far fa-edit"></i>
+                          <i
+                            className="singlePostIcon far fa-edit"
+                            onClick={() => setUpdateMode(!updateMode)}
+                          ></i>
                         </Icon>
                         <Icon>
-                          <i className="singlePostIcon far fa-trash-alt"></i>
+                          <i
+                            className="singlePostIcon far fa-trash-alt"
+                            onClick={() => handleDelete(review.id)}
+                          ></i>
                         </Icon>
                       </CommentEdit>
                     </CommentDate>

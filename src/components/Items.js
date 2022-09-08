@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Items = ({ category, filter, sort }) => {
+const Items = ({ category, title, filter, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -19,7 +19,11 @@ const Items = ({ category, filter, sort }) => {
     const fetchProducts = async () => {
       try {
         const { data } = await publicRequest.get(
-          category ? `/products?category=${category}` : "/products"
+          category
+            ? `/products?category=${category}`
+            : title
+            ? `/products?category=${title}`
+            : "/products"
         );
         setProducts(data);
       } catch (error) {
