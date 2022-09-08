@@ -50,6 +50,7 @@ const MenuItems = styled.article`
 `;
 
 const Right = styled.article`
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -88,7 +89,7 @@ const Navbar = ({ onSearch }) => {
   onSearch(input);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
-    window.location.replace("/login");
+    window.location.replace("/");
   };
 
   return (
@@ -112,14 +113,41 @@ const Navbar = ({ onSearch }) => {
           <NavLink to={"/products/sports"}>
             <MenuItems>Sports</MenuItems>
           </NavLink>
-
-          <MenuItems>Recommendations</MenuItems>
-
           <NavLink to={"/products/families"}>
             <MenuItems>Family</MenuItems>
           </NavLink>
         </Center>
         <Right>
+          {user ? (
+            <>
+              <MenuItems style={{ marginRight: "2rem" }} onClick={handleLogout}>
+                Logout
+              </MenuItems>
+            </>
+          ) : (
+            <>
+              <MenuItems>
+                <NavLink
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to={"/register"}
+                >
+                  Register
+                </NavLink>
+              </MenuItems>
+              <MenuItems>
+                <NavLink
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginRight: "2rem",
+                  }}
+                  to={"/login"}
+                >
+                  Login
+                </NavLink>
+              </MenuItems>
+            </>
+          )}
           <TopInput
             onChange={(event) => setInput(event.target.value)}
             name="title"

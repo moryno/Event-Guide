@@ -4,6 +4,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import { sliderItems } from "../data";
 import { publicRequest } from "../requestMethod";
+import { Link } from "react-router-dom";
 
 const Container = styled.main`
   width: 100%;
@@ -122,15 +123,17 @@ const Header = () => {
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {items.map((item) => (
-          <Slide key={item.id}>
-            <ImgContainer>
-              <Image src={item.img} />
-              <InfoContainer>
-                <Title>{item.title}</Title>
-                <Venue>Science Park</Venue>
-              </InfoContainer>
-            </ImgContainer>
-          </Slide>
+          <Link to={`/product/${item.id}`}>
+            <Slide key={item.id}>
+              <ImgContainer>
+                <Image src={item.img} />
+                <InfoContainer>
+                  <Title>{item.title}</Title>
+                  <Venue>Science Park</Venue>
+                </InfoContainer>
+              </ImgContainer>
+            </Slide>
+          </Link>
         ))}
       </Wrapper>
       <Arrow direction={"right"} onClick={() => handleClick("right")}>
