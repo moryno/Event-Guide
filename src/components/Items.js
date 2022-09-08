@@ -7,7 +7,7 @@ import { publicRequest } from "../requestMethod";
 const Container = styled.div`
   display: flex;
   padding: 20px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 `;
 

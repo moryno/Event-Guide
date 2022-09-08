@@ -8,6 +8,7 @@ import { UserContext } from "../context/Context";
 
 import { useContext, useState } from "react";
 import Navbar from "./Navbar";
+import { Footer } from "./Footer";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/register" element={user ? <Home /> : <Register />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
