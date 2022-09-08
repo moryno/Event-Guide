@@ -5,6 +5,11 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/Context";
 import { publicRequest } from "../requestMethod";
 import VideoPlayer from "../components/VideoPlayer";
+import {
+  EventAvailable,
+  GroupWork,
+  SportsBasketball,
+} from "@material-ui/icons";
 
 const Container = styled.div`
   position: relative;
