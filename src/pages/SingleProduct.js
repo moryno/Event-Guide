@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/Context";
 import { publicRequest } from "../requestMethod";
@@ -14,12 +14,7 @@ const Wrapper = styled.div`
   width: 60%;
   margin: auto;
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50vh;
-  left: 0;
-  right: 0;
-  z-index: 9;
+  flex-direction: column; ;
 `;
 
 const TopContainer = styled.section`
@@ -136,11 +131,17 @@ const UserName = styled.span`
 `;
 
 const ComposeForm = styled.form`
-  background-color: teal;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgb(200, 25, 38) 30%,
+    rgb(239, 110, 27) 70%
+  );
   border-radius: 0.3rem;
   box-sizing: border-box;
   margin-bottom: 2rem;
   padding: 1rem;
+  color: #ffffff;
+  font-weight: 600;
 `;
 
 const FormWrapper = styled.article`
@@ -164,6 +165,7 @@ const Content = styled.textarea`
   font-size: 1.25rem;
   height: 10vh;
   padding: 1.25rem;
+  color: #000000;
   border: none;
   margin-bottom: 1rem;
   border-radius: 0.2rem;
@@ -175,18 +177,19 @@ const Content = styled.textarea`
 const CommentScore = styled.input`
   width: 5rem;
   padding: 1rem;
+  color: #000000;
 `;
 
 const Button = styled.button`
   width: 10rem;
   margin-top: 1rem;
   border: none;
+  alighn-self: end;
   padding: 1rem;
+  background-color: #000000;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
-  &:hover {
-    background-color: #f8f4f4;
-  }
 `;
 
 const SingleProduct = () => {
@@ -301,29 +304,35 @@ const SingleProduct = () => {
             })}
           </CommentContainer>
           <FormTitle>Leave a Reply</FormTitle>
-          <ComposeForm onSubmit={handleSubmit}>
-            <FormWrapper>
-              <FormDesc>
-                Your email address will not be publish.Required fields are
-                marked *
-              </FormDesc>
-              <FormLabel htmlFor="content">Comment *</FormLabel>
-              <Content
-                id="content"
-                name="reviews"
-                type="text"
-                onChange={handleChange}
-              />
-              <FormLabel htmlFor="score">Score *</FormLabel>
-              <CommentScore
-                id="content"
-                name="score"
-                type="number"
-                onChange={handleChange}
-              />
-              <Button>Post Comment</Button>
-            </FormWrapper>
-          </ComposeForm>
+          {user ? (
+            <ComposeForm onSubmit={handleSubmit}>
+              <FormWrapper>
+                <FormDesc>
+                  Your email address will not be publish.Required fields are
+                  marked *
+                </FormDesc>
+                <FormLabel htmlFor="content">Comment *</FormLabel>
+                <Content
+                  id="content"
+                  name="reviews"
+                  type="text"
+                  onChange={handleChange}
+                />
+                <FormLabel htmlFor="score">Score *</FormLabel>
+                <CommentScore
+                  id="content"
+                  name="score"
+                  type="number"
+                  onChange={handleChange}
+                />
+                <Button>Post Comment</Button>
+              </FormWrapper>
+            </ComposeForm>
+          ) : (
+            <Link to={"/register"}>
+              <Button>Subscribe</Button>
+            </Link>
+          )}
         </BottomContainer>
       </Wrapper>
     </Container>
