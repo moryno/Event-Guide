@@ -3,12 +3,13 @@ import styled from "styled-components";
 import Category from "./Category";
 
 const Card = styled.article`
-  width: 23%;
-  height: 20rem;
+  width: 24%;
+  height: 50vh;
   border-radius: 0.25rem;
   flex-direction: column;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
   cursor: pointer;
 `;
 
@@ -17,6 +18,10 @@ const Image = styled.img`
   height: 100%;
   border-radius: 0.25rem;
   object-fit: cover;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 1.2s ease-in-out;
+  }
 `;
 
 const Button = styled.button`

@@ -61,7 +61,7 @@ const CategoryList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Items category={category} title={search} filter={filter} sort={sort} />
+      <Items category={category} filter={filter} sort={sort} />
     </Container>
   );
 };
