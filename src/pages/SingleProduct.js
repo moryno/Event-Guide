@@ -217,7 +217,7 @@ const SingleProduct = () => {
       setProduct(data);
     };
     fetchProduct();
-  }, [id]);
+  }, [id, product]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -234,7 +234,6 @@ const SingleProduct = () => {
     try {
       const { data } = await publicRequest.post(`/reviews`, input);
       setProduct({ ...product, data });
-      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -262,7 +261,6 @@ const SingleProduct = () => {
           return review.id !== reviewId;
         });
       });
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }
