@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   width: 60%;
   margin: auto;
   display: flex;
+  overflow: hidden;
   flex-direction: column; ;
 `;
 
@@ -208,6 +209,8 @@ const SingleProduct = () => {
     score: null,
   });
 
+  const [tempVal, setTempVa] = useState(input.reviews);
+
   useEffect(() => {
     const fetchProduct = async () => {
       const { data } = await publicRequest.get(`/products/${id}`);
@@ -236,6 +239,13 @@ const SingleProduct = () => {
       console.log(err);
     }
   };
+  console.log(tempVal);
+  const handleKeyDown = (event) => {
+    const key = event.keyCode;
+    if (key === 13 || key === 27) {
+      setUpdateMode(false);
+    }
+  };
 
   const handleUpdate = async (reviewId) => {
     try {
@@ -260,7 +270,7 @@ const SingleProduct = () => {
 
   return (
     <Container>
-      <VideoPlayer />
+      <VideoPlayer product={product} />
       <Wrapper>
         <TopContainer>
           <ImageContainer>
@@ -307,6 +317,17 @@ const SingleProduct = () => {
                 </Comment>
               );
             })}
+            {updateMode && (
+              <Content
+                autoFocus={true}
+                onKeyDown={handleKeyDown}
+                style={{
+                  color: "#000",
+                  border: "1px solid lightgray",
+                  width: "100%",
+                }}
+              />
+            )}
           </CommentContainer>
           <FormTitle>Leave a Reply</FormTitle>
           {user ? (

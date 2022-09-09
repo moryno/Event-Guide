@@ -43,10 +43,13 @@ const ImageContainer = styled.article`
   display: flex;
   align-items: center;
   position: relative;
+  width: 100%;
+  height: 20vh;
 `;
 
 const Image = styled.img`
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   border-radius: 0.25rem;
   object-fit: cover;
 `;

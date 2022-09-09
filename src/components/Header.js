@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
-import { sliderItems } from "../data";
+
 import { publicRequest } from "../requestMethod";
 import { Link } from "react-router-dom";
 
@@ -69,7 +69,7 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 100%;
+  width: 100%;
   object-fit: cover;
   &:hover {
     transform: scale(1.1);

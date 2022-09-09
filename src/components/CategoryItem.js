@@ -4,13 +4,21 @@ import Category from "./Category";
 
 const Card = styled.article`
   width: 24%;
-  height: 50vh;
+
   border-radius: 0.25rem;
   flex-direction: column;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+`;
+
+const ImageContainer = styled.article`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 20vh;
 `;
 
 const Image = styled.img`
@@ -23,7 +31,6 @@ const Image = styled.img`
     transition: all 1.2s ease-in-out;
   }
 `;
-
 const Button = styled.button`
   border: none;
   padding: 0.7rem;
@@ -41,7 +48,9 @@ const CategoryItem = ({ category }) => {
   return (
     <Card>
       <Link to={`/products/${category.cat}`}>
-        <Image src={category.img} alt="categoryImg" />
+        <ImageContainer>
+          <Image src={category.img} alt="categoryImg" />
+        </ImageContainer>
         <Button>{category.cat}</Button>
       </Link>
     </Card>

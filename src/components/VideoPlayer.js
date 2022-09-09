@@ -7,14 +7,14 @@ const Container = styled.main`
   justify-content: center;
 `;
 
-const VideoPlayer = () => {
+const VideoPlayer = ({ product }) => {
   return (
     <Container>
       <ReactPlayer
         width={"100vw"}
         height={"65vh"}
         controls
-        url="https://www.youtube.com/watch?v=HUgmq_8PlRY"
+        url={product.trailer}
         onReady={() => console.log("onReady callback")}
         onStart={() => console.log("onStart callback")}
         onPause={() => console.log("onPause callback")}
