@@ -294,7 +294,7 @@ const SingleProduct = () => {
                   <CommentHeader>
                     <UserName>{review.user.username}</UserName>
                     <CommentDate>
-                      7th January
+                      {new window.Date(review.created_at).toDateString()}
                       <CommentEdit>
                         <Icon>
                           <i

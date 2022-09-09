@@ -79,7 +79,7 @@ const Item = ({ item }) => {
             <CategoryTitle>{item.categories}</CategoryTitle>
           </Category>
           <Title>{item.title}</Title>
-          <Date></Date>
+          <Date>{new window.Date(item.created_at).toDateString()}</Date>
         </InfoContainer>
         <Button>Learn More</Button>
       </Link>
