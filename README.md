@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Event Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## By Maurice Nganga
 
-## Available Scripts
+### _eventguide_ landing page
 
-In the project directory, you can run:
+![Event Guide](./src/images/eventguide.png)
 
-### `npm start`
+## Table of Content
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Description](#description)
+- [Features](#features)
+- [Development](#development)
+- [Live Link](#live-link)
+- [Setup Instructions and Technology](#technology-used)
+- [License](#license)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Description
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_eventguide_ is a web application meant to be help their clients in keeping upto date with major events that is meaningful to them. The user can browse and read any events when they land on the page, the can choose events by category, they can select an event interesting to them and read more about it. When they are in a particular event like movies they can read comments about that particular movie and also be able to comment on the movie. It allows them to delete the comment if they want to.
 
-### `npm run build`
+This is a _eventguide_ website with a front-end made using React and a backend made with Active records, Sinatra and Sqlite3. Active Record allowed us to create three models, _User_, _Product_ and _Review_ that could communicate with the tables, _users_, _products_ and _review_ in the Sqlite3 database with the help of migrations that we created. In each model if where we defined our Active Record associations for example:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> User has_many reviews and has_many products through reviews.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Product has_many reviews and has_many users through reviews
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> Review belongs_to user and also belongs_to product
 
-### `npm run eject`
+Sinata helped in creating api endpoints that could be used by React frontend to get, post, delete and update the products and its associates. Through the use of routing methods that Sinatra provided like **get**, **post**, **patch** and **delete** Active Record and Sinatra also provided methods that could be used to initiate a new instance of the classes, _User_, _Product_ and _Review_ and be able to associate them.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The front-end is diployed in [vercel](https://vercel.com/) hosting service while the Sinatra is hosted in [heroku](https://heroku.com/).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+A user visiting this page would be able to see:
 
-## Learn More
+1. A home page populated with events from different organizers.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. A top navigation section with links to register or login for a new user and a link to post comment for a registed user.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. A user can select a post by clicking on the title and this will enable to read the full article in a single separate page
 
-### Code Splitting
+4. For a user they can visit the compose page and they are provided with tools to write, edit, upload and post an article in any topic they are interested in.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. A registered user are future provided with tools to edit or delete their own post when they select their own posts and be redirected to the single page.
 
-### Analyzing the Bundle Size
+6. A settings [age where they can edit thier profil, upload a profile or delete their own profile.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+7. A viitor to the website can select a post depending on the author or categegory they are interested in by clicking on the author name or category list.
 
-### Making a Progressive Web App
+### Technology Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+- Used Visual Studio Code editor to create the front-end with _**React**_ and backend with _**db.json**_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Styled-components** - was used to create the structure and the styling of the website.
 
-### Deployment
+- **Firebase** - was used to upload images to the website.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Context-Api** - was used to help persist a user across all pages in the website and enable them with accessibility privilages.
 
-### `npm run build` fails to minify
+- **React** - help in creating interactive website
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Development
+
+---
+
+Want to contribute? Excellent!
+
+To enhance or contribute on the existing project, follow these steps:
+
+- Fork the repo
+- Create a new branch (git checkout -b enhance-feature)
+- Make the appropriate changes in the files
+- Add changes to reflect the changes made
+- Commit your changes (git commit -m 'Enhanced feature')
+- Push to the branch (git push origin enhance-feature)
+- Create a Pull Request
+
+### Live Link
+
+---
+
+\- Click this link to see the live website [Tech Blog Website](https://tech-blog-moryno.vercel.app/)
+
+## License
+
+---
+
+MIT License
+
+Copyright (c) [2022] [Maurice Nganga]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
