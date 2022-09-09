@@ -356,7 +356,7 @@ const SingleProduct = () => {
             </ComposeForm>
           ) : (
             <Link to={"/register"}>
-              <Button>Subscribe</Button>
+              <Button style={{ marginBottom: "5vh" }}>Subscribe</Button>
             </Link>
           )}
         </BottomContainer>
