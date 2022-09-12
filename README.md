@@ -43,29 +43,25 @@ A user visiting this page would be able to see:
 
 2. A top navigation section with links to register or login for a new user and a link to post comment for a registed user.
 
-3. A user can select a post by clicking on the title and this will enable to read the full article in a single separate page
+3. A user can select an event by clicking on the cards and this will enable to read the full article in a single separate page
 
-4. For a user they can visit the compose page and they are provided with tools to write, edit, upload and post an article in any topic they are interested in.
+4. For a user they can visit the single event page and they are provided with tools to post, edit, and delete a comment in any event they are interested in.
 
-5. A registered user are future provided with tools to edit or delete their own post when they select their own posts and be redirected to the single page.
-
-6. A settings [age where they can edit thier profil, upload a profile or delete their own profile.
-
-7. A viitor to the website can select a post depending on the author or categegory they are interested in by clicking on the author name or category list.
+5. A user can browse by category and can also search on a specific title in the given category they are in.
 
 ### Technology Used
 
 ---
 
-- Used Visual Studio Code editor to create the front-end with _**React**_ and backend with _**db.json**_
+- Used Visual Studio Code editor to create the front-end with _**React**_ and backend with _**Active Record**_, _**Sinatra**_, _**Sqlite3**_
 
 - **Styled-components** - was used to create the structure and the styling of the website.
-
-- **Firebase** - was used to upload images to the website.
 
 - **Context-Api** - was used to help persist a user across all pages in the website and enable them with accessibility privilages.
 
 - **React** - help in creating interactive website
+
+_**Active Record**_, _**Sinatra**_, _**Sqlite3**_ helped in creating the database, the three main models, _User_, _Product_, and _Review_ and their associations. Also in creating the tables _users_, _products_, and _reviews_ and and routing to be used in the frontend by clients for _get_, _post_,_patch_ and _delete_
 
 ---
 
@@ -89,7 +85,7 @@ To enhance or contribute on the existing project, follow these steps:
 
 ---
 
-\- Click this link to see the live website [Tech Blog Website](https://tech-blog-moryno.vercel.app/)
+\- Click this link to see the live website [eventguide](https://event-guide-jvquku5fg-moryno.vercel.app/)
 
 ## License
 
