@@ -4,6 +4,43 @@ import styled from "styled-components";
 import { UserContext } from "../context/Context";
 import { publicRequest } from "../requestMethod";
 
+export const Login = () => {
+  const userRef = useRef();
+  const passwordRef = useRef();
+
+  const { user, errors, dispatch, isFetching } = useContext(UserContext);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const { data } = await publicRequest.post(`/login`, {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
+    } catch (error) {
+      dispatch("LOGIN_FAILURE");
+    }
+  };
+
+  return (
+    <Container>
+      <Wrapper>
+        <Title>SIGN IN</Title>
+        <Form onSubmit={handleSubmit}>
+          <Input placeholder="Username" name="username" ref={userRef} />
+          <Input placeholder="Password" type="password" ref={passwordRef} />
+          <Button disabled={isFetching}>LOGIN</Button>
+          {errors && <Error>Something went wrong</Error>}
+          <Link>DO NOT REMEMBER PASSWORD?</Link>
+          <Link>CREATE A NEW ACCOUNT</Link>
+        </Form>
+      </Wrapper>
+    </Container>
+  );
+};
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -11,7 +48,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://media.bostonproper.com/i/bostonproper/756-d2-home-feature-01-desktop?fmt=auto")
+    url("https://play-lh.googleusercontent.com/FAh9yamRzyAZiFHAUWSTtJxy0S7MZE5c-vwF3W9aAvJVzm6EKnJ3N_mVp_s5RL7sLBQ=w3840-h2160-rw")
       center;
   background-size: cover;
   display: flex;
@@ -66,40 +103,3 @@ const Link = styled.a`
 const Error = styled.span`
   color: red;
 `;
-
-export const Login = () => {
-  const userRef = useRef();
-  const passwordRef = useRef();
-
-  const { user, errors, dispatch, isFetching } = useContext(UserContext);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    dispatch({ type: "LOGIN_START" });
-    try {
-      const { data } = await publicRequest.post(`/login`, {
-        username: userRef.current.value,
-        password: passwordRef.current.value,
-      });
-      dispatch({ type: "LOGIN_SUCCESS", payload: data });
-    } catch (error) {
-      dispatch("LOGIN_FAILURE");
-    }
-  };
-
-  return (
-    <Container>
-      <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form onSubmit={handleSubmit}>
-          <Input placeholder="Username" name="username" ref={userRef} />
-          <Input placeholder="Password" type="password" ref={passwordRef} />
-          <Button disabled={isFetching}>LOGIN</Button>
-          {errors && <Error>Something went wrong</Error>}
-          <Link>DO NOT REMEMBER PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
-        </Form>
-      </Wrapper>
-    </Container>
-  );
-};

@@ -2,58 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { publicRequest } from "../requestMethod";
 
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://res.cloudinary.com/trunk-club/image/upload/f_auto,q_auto/Blog/19080_Aug_SeptCamp_BodySeries_invertedtriangle_hero_02.jpg")
-      center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 40%;
-  padding: 20px;
-  background-color: white;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0 0;
-  padding: 10px;
-`;
-
-const Agreement = styled.p`
-  font-size: 12px;
-  margin: 20px 0;
-`;
-
-const Button = styled.button`
-  width: 50%;
-  background-color: teal;
-  color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  border: none;
-`;
-
 const Register = () => {
   const [input, setInput] = useState({
     first_name: "",
@@ -132,3 +80,55 @@ const Register = () => {
 };
 
 export default Register;
+
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://play-lh.googleusercontent.com/FAh9yamRzyAZiFHAUWSTtJxy0S7MZE5c-vwF3W9aAvJVzm6EKnJ3N_mVp_s5RL7sLBQ=w3840-h2160-rw")
+      center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+  width: 40%;
+  padding: 20px;
+  background-color: white;
+`;
+
+const Title = styled.h1`
+  font-size: 24px;
+  font-weight: 300;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Input = styled.input`
+  flex: 1;
+  min-width: 40%;
+  margin: 20px 10px 0 0;
+  padding: 10px;
+`;
+
+const Agreement = styled.p`
+  font-size: 12px;
+  margin: 20px 0;
+`;
+
+const Button = styled.button`
+  width: 50%;
+  background-color: teal;
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+`;
