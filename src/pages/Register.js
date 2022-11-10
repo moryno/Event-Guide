@@ -40,13 +40,13 @@ const Input = styled.input`
   padding: 10px;
 `;
 
-const Agreement = styled.span`
+const Agreement = styled.p`
   font-size: 12px;
   margin: 20px 0;
 `;
 
 const Button = styled.button`
-  width: 40%;
+  width: 50%;
   background-color: teal;
   color: white;
   padding: 15px 20px;

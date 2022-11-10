@@ -11,13 +11,180 @@ import {
   SportsBasketball,
 } from "@material-ui/icons";
 
+const SingleProduct = () => {
+  const [product, setProduct] = useState({});
+  const { id } = useParams();
+  const { user } = useContext(UserContext);
+  const [updateMode, setUpdateMode] = useState(false);
+
+  const [input, setInput] = useState({
+    reviews: "",
+    score: null,
+  });
+
+  const [tempVal, setTempVa] = useState(input.reviews);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await publicRequest.get(`/products/${id}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [id, product]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInput({
+      ...input,
+      [name]: value,
+      product_id: product.id,
+      user_id: user?.id,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await publicRequest.post(`/reviews`, input);
+      setProduct({ ...product, data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(tempVal);
+  const handleKeyDown = (event) => {
+    const key = event.keyCode;
+    if (key === 13 || key === 27) {
+      setUpdateMode(false);
+    }
+  };
+
+  const handleUpdate = async (reviewId) => {
+    try {
+      await publicRequest.patch(`/reviews/${reviewId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleDelete = async (reviewId) => {
+    try {
+      await publicRequest.delete(`/reviews/${reviewId}`);
+      setProduct((prevProduct) => {
+        return prevProduct.reviews.filter((review) => {
+          return review.id !== reviewId;
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <Container>
+      {product?.trailer && <VideoPlayer product={product} />}
+      <Wrapper>
+        <TopContainer>
+          <ImageContainer>
+            <Image src={product.img} alt="movieImg" />
+          </ImageContainer>
+          <InfoContainer>
+            <Category>{product.categories}</Category>
+            <Title>{product.title}</Title>
+            <Score>Rating: 9.0</Score>
+            <Price>Ticket: {product.price}</Price>
+          </InfoContainer>
+        </TopContainer>
+        <BottomContainer>
+          <DescriptionContainer>
+            <DescriptionTitle>Description</DescriptionTitle>
+            <Desc>{product.description}</Desc>
+          </DescriptionContainer>
+          <CommentContainer>
+            <CommentTitle>{product.reviews?.length} Comments</CommentTitle>
+            {product.reviews?.map((review) => {
+              return (
+                <Comment key={review.id}>
+                  <CommentHeader>
+                    <UserName>{review.user.username}</UserName>
+                    <CommentDate>
+                      {new window.Date(review.created_at).toDateString()}
+                      <CommentEdit>
+                        <Icon>
+                          <i
+                            className="singlePostIcon far fa-edit"
+                            onClick={() => setUpdateMode(!updateMode)}
+                          ></i>
+                        </Icon>
+                        <Icon>
+                          <i
+                            className="singlePostIcon far fa-trash-alt"
+                            onClick={() => handleDelete(review.id)}
+                          ></i>
+                        </Icon>
+                      </CommentEdit>
+                    </CommentDate>
+                  </CommentHeader>
+                  <Post>{review.reviews}</Post>
+                </Comment>
+              );
+            })}
+            {updateMode && (
+              <Content
+                autoFocus={true}
+                onKeyDown={handleKeyDown}
+                style={{
+                  color: "#000",
+                  border: "1px solid lightgray",
+                  width: "100%",
+                }}
+              />
+            )}
+          </CommentContainer>
+          <FormTitle>Leave a Reply</FormTitle>
+          {user ? (
+            <ComposeForm onSubmit={handleSubmit}>
+              <FormWrapper>
+                <FormDesc>
+                  Your email address will not be publish.Required fields are
+                  marked *
+                </FormDesc>
+                <FormLabel htmlFor="content">Comment *</FormLabel>
+                <Content
+                  id="content"
+                  name="reviews"
+                  type="text"
+                  onChange={handleChange}
+                />
+                <FormLabel htmlFor="score">Score *</FormLabel>
+                <CommentScore
+                  id="content"
+                  name="score"
+                  type="number"
+                  onChange={handleChange}
+                />
+                <Button>Post Comment</Button>
+              </FormWrapper>
+            </ComposeForm>
+          ) : (
+            <Link to={"/register"}>
+              <Button style={{ marginBottom: "5vh" }}>Subscribe</Button>
+            </Link>
+          )}
+        </BottomContainer>
+      </Wrapper>
+    </Container>
+  );
+};
+
+export default SingleProduct;
+
 const Container = styled.div`
   position: relative;
 `;
 
 const Wrapper = styled.div`
   width: 60%;
-  margin: auto;
+  margin: 1rem auto;
   display: flex;
   overflow: hidden;
   flex-direction: column; ;
@@ -197,170 +364,3 @@ const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
 `;
-
-const SingleProduct = () => {
-  const [product, setProduct] = useState({});
-  const { id } = useParams();
-  const { user } = useContext(UserContext);
-  const [updateMode, setUpdateMode] = useState(false);
-
-  const [input, setInput] = useState({
-    reviews: "",
-    score: null,
-  });
-
-  const [tempVal, setTempVa] = useState(input.reviews);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await publicRequest.get(`/products/${id}`);
-      setProduct(data);
-    };
-    fetchProduct();
-  }, [id, product]);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setInput({
-      ...input,
-      [name]: value,
-      product_id: product.id,
-      user_id: user?.id,
-    });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await publicRequest.post(`/reviews`, input);
-      setProduct({ ...product, data });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log(tempVal);
-  const handleKeyDown = (event) => {
-    const key = event.keyCode;
-    if (key === 13 || key === 27) {
-      setUpdateMode(false);
-    }
-  };
-
-  const handleUpdate = async (reviewId) => {
-    try {
-      await publicRequest.patch(`/reviews/${reviewId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleDelete = async (reviewId) => {
-    try {
-      await publicRequest.delete(`/reviews/${reviewId}`);
-      setProduct((prevProduct) => {
-        return prevProduct.reviews.filter((review) => {
-          return review.id !== reviewId;
-        });
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <Container>
-      <VideoPlayer product={product} />
-      <Wrapper>
-        <TopContainer>
-          <ImageContainer>
-            <Image src={product.img} alt="movieImg" />
-          </ImageContainer>
-          <InfoContainer>
-            <Category>{product.categories}</Category>
-            <Title>{product.title}</Title>
-            <Score>Rating: 9.0</Score>
-            <Price>Ticket: {product.price}</Price>
-          </InfoContainer>
-        </TopContainer>
-        <BottomContainer>
-          <DescriptionContainer>
-            <DescriptionTitle>Description</DescriptionTitle>
-            <Desc>{product.description}</Desc>
-          </DescriptionContainer>
-          <CommentContainer>
-            <CommentTitle>{product.reviews?.length} Comments</CommentTitle>
-            {product.reviews?.map((review) => {
-              return (
-                <Comment key={review.id}>
-                  <CommentHeader>
-                    <UserName>{review.user.username}</UserName>
-                    <CommentDate>
-                      {new window.Date(review.created_at).toDateString()}
-                      <CommentEdit>
-                        <Icon>
-                          <i
-                            className="singlePostIcon far fa-edit"
-                            onClick={() => setUpdateMode(!updateMode)}
-                          ></i>
-                        </Icon>
-                        <Icon>
-                          <i
-                            className="singlePostIcon far fa-trash-alt"
-                            onClick={() => handleDelete(review.id)}
-                          ></i>
-                        </Icon>
-                      </CommentEdit>
-                    </CommentDate>
-                  </CommentHeader>
-                  <Post>{review.reviews}</Post>
-                </Comment>
-              );
-            })}
-            {updateMode && (
-              <Content
-                autoFocus={true}
-                onKeyDown={handleKeyDown}
-                style={{
-                  color: "#000",
-                  border: "1px solid lightgray",
-                  width: "100%",
-                }}
-              />
-            )}
-          </CommentContainer>
-          <FormTitle>Leave a Reply</FormTitle>
-          {user ? (
-            <ComposeForm onSubmit={handleSubmit}>
-              <FormWrapper>
-                <FormDesc>
-                  Your email address will not be publish.Required fields are
-                  marked *
-                </FormDesc>
-                <FormLabel htmlFor="content">Comment *</FormLabel>
-                <Content
-                  id="content"
-                  name="reviews"
-                  type="text"
-                  onChange={handleChange}
-                />
-                <FormLabel htmlFor="score">Score *</FormLabel>
-                <CommentScore
-                  id="content"
-                  name="score"
-                  type="number"
-                  onChange={handleChange}
-                />
-                <Button>Post Comment</Button>
-              </FormWrapper>
-            </ComposeForm>
-          ) : (
-            <Link to={"/register"}>
-              <Button style={{ marginBottom: "5vh" }}>Subscribe</Button>
-            </Link>
-          )}
-        </BottomContainer>
-      </Wrapper>
-    </Container>
-  );
-};
-
-export default SingleProduct;

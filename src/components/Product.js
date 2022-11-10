@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import Concert from "./Concert";
-import Family from "./Family";
-import Movie from "./Movie";
-import Sport from "./Sport";
+import TopSelling from "./TopSelling";
 
 const Container = styled.main`
   margin-top: 6vh;
@@ -18,10 +15,10 @@ const Product = () => {
   return (
     <Container>
       <Title>Top Selling</Title>
-      <Movie />
-      <Concert />
-      <Sport />
-      <Family />
+      <TopSelling type="movies" title="See All Movies" />
+      <TopSelling type="concerts" title="See All Concerts" />
+      <TopSelling type="sports" title="See All Sports" />
+      <TopSelling type="families" title="See All Family" />
     </Container>
   );
 };
